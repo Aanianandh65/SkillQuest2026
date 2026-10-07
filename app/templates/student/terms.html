@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Terms & Conditions | Skill Quest 2026
+    </title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+
+<body class="student-body">
+
+
+<header class="student-header">
+
+    <div class="student-brand">
+
+        <div class="student-logo"><img src="{{ url_for('static', filename='images/skillquest-logo.png') }}" alt="Skill Quest 2026 Logo"></div>
+
+        <div>
+
+            <h4>Skill Quest 2026</h4>
+
+            <span>
+                Educadd Online Examination System
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <a
+        href="{{ url_for('auth.logout') }}"
+        class="student-logout">
+
+        Logout
+
+    </a>
+
+</header>
+
+
+<main class="terms-container">
+
+
+    <div class="terms-card">
+
+
+        <div class="terms-header">
+
+            <h2>
+                Examination Instructions
+            </h2>
+
+            <p>
+                Please read all instructions carefully
+                before starting your examination.
+            </p>
+
+        </div>
+
+
+        <div class="instruction-list">
+
+
+            <div class="instruction">
+
+                <span>01</span>
+
+                <p>
+                    The examination contains
+                    <strong>50 questions</strong>.
+                </p>
+
+            </div>
+
+
+            <div class="instruction">
+
+                <span>02</span>
+
+                <p>
+                    Each question carries
+                    <strong>2 marks</strong>.
+                </p>
+
+            </div>
+
+
+            <div class="instruction">
+
+                <span>03</span>
+
+                <p>
+                    The maximum score is
+                    <strong>100 marks</strong>.
+                </p>
+
+            </div>
+
+
+            <div class="instruction">
+
+                <span>04</span>
+
+                <p>
+                    The total examination duration is
+                    <strong>30 minutes</strong>.
+                </p>
+
+            </div>
+
+
+            <div class="instruction">
+
+                <span>05</span>
+
+                <p>
+                    Once you proceed to the next question,
+                    you cannot return to the previous question.
+                </p>
+
+            </div>
+
+
+            <div class="instruction">
+
+                <span>06</span>
+
+                <p>
+                    Your examination will automatically
+                    submit when the time expires.
+                </p>
+
+            </div>
+
+
+            <div class="instruction">
+
+                <span>07</span>
+
+                <p>
+                    Do not refresh or close the browser
+                    during the examination.
+                </p>
+
+            </div>
+
+
+            <div class="instruction">
+
+                <span>08</span>
+
+                <p>
+                    Your examination score will not be
+                    displayed immediately after submission.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="terms-agreement">
+
+            <label>
+
+                <input
+                    type="checkbox"
+                    id="agreeCheckbox">
+
+                <span>
+                    I have read and understood the
+                    examination instructions and agree
+                    to follow them.
+                </span>
+
+            </label>
+
+        </div>
+
+
+        <div class="terms-actions">
+
+            <a
+                href="{{ url_for('student.dashboard') }}"
+                class="back-button">
+
+                Back
+
+            </a>
+            <form 
+                 
+                method="POST"
+                action="{{ url_for('student.start_exam') }}"
+                id="startExamForm">
+
+                <input 
+                    type="hidden"
+                    name="agreed"
+                    value="yes" >
+
+                <button
+                    type="submit"
+                    id="startExamButton"
+                    class="start-button"
+                    disabled>
+
+                    I Agree & Start Exam
+
+                </button>
+
+            </form>
+        </div>
+
+
+    </div>
+
+
+</main>
+
+
+<script>
+
+const checkbox =
+    document.getElementById("agreeCheckbox");
+
+const startButton =
+    document.getElementById("startExamButton");
+
+
+checkbox.addEventListener(
+    "change",
+    function() {
+
+        startButton.disabled =
+            !checkbox.checked;
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>
